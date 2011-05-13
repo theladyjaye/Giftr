@@ -1,0 +1,19 @@
+RewriteBase /
+#RewriteMap lowercase int:tolower
+#AllowEncodedSlashes On
+
+
+#RedirectMatch 404 ^/application(/?|/.*)$
+
+<FilesMatch "[^\.]+\.ini">
+	Order allow,deny
+	Deny from all
+	Satisfy All
+</FilesMatch>
+
+# WWW Routes
+RewriteRule ^$ /index.php [L]
+RewriteRule ^signup/complete/?$ /signup-success.php [L]
+RewriteRule ^signup/?$ /signup-form.php [L]
+RewriteRule ^login/?$ /login-form.php [L]
+RewriteRule ^logout/?$ /logout.php [L]
