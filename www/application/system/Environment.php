@@ -1,13 +1,13 @@
 <?php
 $controller = null;
 $model = null;
-require "GFTRApplication.php";
-require "GFTRConfiguration.php";
-require "GFTRDatabase.php";
-require "GFTRPage.php";
-require "GFTRController.php";
-require "GFTRSession.php";
-require "GFTRSecurity.php";
+require "Application.php";
+require "Configuration.php";
+require "Database.php";
+require "Page.php";
+require "Controller.php";
+require "Session.php";
+require "Security.php";
 
 use Giftr\System as System;
 

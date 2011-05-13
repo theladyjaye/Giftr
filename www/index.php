@@ -1,5 +1,5 @@
 <?php 
-require 'application/system/GFTREnvironment.php';
+require 'application/system/Environment.php';
 Giftr\System\Page::Controller('DefaultController.php');
 ?>
 <!DOCTYPE HTML>
