@@ -12,8 +12,13 @@ RewriteBase /
 </FilesMatch>
 
 # WWW Routes
+# GET Routes
+RewriteCond %{REQUEST_METHOD} ^GET [NC]
 RewriteRule ^$ /index.php [L]
 RewriteRule ^signup/complete/?$ /signup-success.php [L]
 RewriteRule ^signup/?$ /signup-form.php [L]
 RewriteRule ^login/?$ /login-form.php [L]
 RewriteRule ^logout/?$ /logout.php [L]
+
+# POST Routes
+RewriteCond %{REQUEST_METHOD} ^POST [NC]
