@@ -2,9 +2,10 @@ RewriteBase /
 #RewriteMap lowercase int:tolower
 #AllowEncodedSlashes On
 
+# Deny any Urls for /application
+RedirectMatch 404 ^/application(/?|/.*)$
 
-#RedirectMatch 404 ^/application(/?|/.*)$
-
+# Don't serve anything ending in .ini
 <FilesMatch "[^\.]+\.ini">
 	Order allow,deny
 	Deny from all
@@ -12,6 +13,11 @@ RewriteBase /
 </FilesMatch>
 
 # WWW Routes
+
+# POST Routes
+RewriteCond %{REQUEST_METHOD} ^POST [NC]
+RewriteRule .* error.php [L]
+
 # GET Routes
 RewriteCond %{REQUEST_METHOD} ^GET [NC]
 RewriteRule ^$ /index.php [L]
@@ -20,5 +26,3 @@ RewriteRule ^signup/?$ /signup-form.php [L]
 RewriteRule ^login/?$ /login-form.php [L]
 RewriteRule ^logout/?$ /logout.php [L]
 
-# POST Routes
-RewriteCond %{REQUEST_METHOD} ^POST [NC]
