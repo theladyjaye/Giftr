@@ -14,15 +14,9 @@ RedirectMatch 404 ^/application(/?|/.*)$
 
 # WWW Routes
 
-# POST Routes
-RewriteCond %{REQUEST_METHOD} ^POST [NC]
-RewriteRule .* error.php [L]
-
-# GET Routes
-RewriteCond %{REQUEST_METHOD} ^GET [NC]
 RewriteRule ^$ /index.php?verb=$1 [L]
-RewriteRule ^signup/complete/?$ /signup-success.php [L]
-RewriteRule ^signup/?$ /signup-form.php [L]
-RewriteRule ^login/?$ /login-form.php [L]
-RewriteRule ^logout/?$ /logout.php [L]
+#RewriteRule ^signup/complete/?$ /signup-success.php [L]
+#RewriteRule ^signup/?$ /signup-form.php [L]
+#RewriteRule ^login/?$ /login-form.php [L]
+#RewriteRule ^logout/?$ /logout.php [L]
 
