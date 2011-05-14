@@ -1,6 +1,7 @@
 <?php
 $controller = null;
 $model = null;
+
 require "Application.php";
 require "Configuration.php";
 require "Database.php";
