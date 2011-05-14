@@ -2,6 +2,7 @@
 namespace Giftr\System;
 abstract class Controller extends Page
 {
+	public $model;
 	protected $requiresAuthorization  = false;
 	protected $requiresPermission     = false;
 	protected $currentUser            = null;
@@ -9,6 +10,9 @@ abstract class Controller extends Page
 	protected abstract function initialize_complete();
 	protected function initialize()
 	{
+		global $model;
+		$this->model =& $model;
+		
 		if($this->requiresAuthorization)
 			$this->verifyAuthorization();
 		

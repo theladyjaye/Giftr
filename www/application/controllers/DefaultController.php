@@ -4,11 +4,61 @@ class DefaultController extends System\Controller
 {
 	protected function initialize_complete()
 	{
+		$this->messages = new stdClass();
+		$this->model = new stdClass();
+		$this->model->messages = "{}";
+		$this->model->formSuccess = false;
+		
+		if($this->isPostBack)
+		{
+			$this->processForm();
+		}
+	}
+	
+	private function processForm()
+	{
 		global $model;
-		print_r($_GET);
-		$model = new stdClass();
-		$model->title = "Welcome to Giftr";
-		$model->message = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+		
+		require System\Application::basePath().'/application/libs/axismundi/forms/AMForm.php';
+		require System\Application::basePath().'/application/libs/axismundi/forms/validators/AMPatternValidator.php';
+		require System\Application::basePath().'/application/libs/axismundi/forms/validators/AMInputValidator.php';
+		require System\Application::basePath().'/application/libs/axismundi/forms/validators/AMEmailValidator.php';
+		require System\Application::basePath().'/application/libs/axismundi/forms/validators/AMMatchValidator.php';
+		require System\Application::basePath().'/application/libs/axismundi/forms/validators/AMErrorValidator.php';
+		
+		$context = array(AMForm::kDataKey=>$_POST);
+		$form    = AMForm::formWithContext($context);
+		
+		$form->addValidator(new AMPatternValidator('username', AMValidator::kRequired, '/^[\w\d]{4,}$/', "Invalid username.  Expecting minimum 4 characters. Must be composed of letters, numbers or _"));
+		$form->addValidator(new AMEmailValidator('email', AMValidator::kRequired, 'Invalid email address'));
+		$form->addValidator(new AMPatternValidator('password', AMValidator::kRequired, '/^[\w\d\W]{5,}$/', "Invalid password.  Expecting minimum 5 characters. Cannot contain spaces"));
+		$form->addValidator(new AMMatchValidator('password', 'password-verify', AMValidator::kRequired, "Passwords do not match"));
+		
+		if($form->isValid)
+		{
+			$this->model->formSuccess = true;
+		}
+		else
+		{
+			$this->hydrateErrors($form, $this->messages);
+			$this->model->messages = json_encode($this->messages);
+		}
+	}
+	
+	protected function hydrateErrors(&$input, &$messages)
+	{
+		$messages->errors = array();
+		
+		foreach($input->validators as $validator)
+		{
+			if(!$validator->isValid)
+			{
+				$error = new stdClass();
+				$error->key = $validator->key;
+				$error->message = $validator->message;
+				$messages->errors[] = $error;
+			}
+		}
 	}
 }
 ?>
