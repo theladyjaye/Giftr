@@ -1,6 +1,6 @@
 <?php
 namespace Giftr\System;
-class GMRDatabase
+class Database
 {
 	const kSql     = 1;
 	
@@ -23,7 +23,7 @@ class GMRDatabase
 		{
 			$configuration = Configuration::standardConfiguration();
 			
-			$connection =  new mysqli($configuration['database.sql.host'], 
+			$connection =  new \mysqli($configuration['database.sql.host'], 
 				                      $configuration['database.sql.username'],
 				                      $configuration['database.sql.password'],
 				                      $configuration['database.sql.catalog']);

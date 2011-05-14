@@ -1,5 +1,6 @@
 <?php
 use Giftr\System as System;
+
 class DefaultController extends System\Controller
 {
 	protected function initialize_complete()
@@ -8,6 +9,17 @@ class DefaultController extends System\Controller
 		$this->model = new stdClass();
 		$this->model->messages = "{}";
 		$this->model->formSuccess = false;
+		
+		/*
+		$db = System\Database::connection(System\Database::kSql);
+		$query = new AMQuery($db);
+		$query->sql = "select * from user";
+		
+		foreach($query as $row)
+		{
+			echo $row["username"], " : ", $row["email"], "<br>";
+		}*/
+		
 		
 		if($this->isPostBack)
 		{
