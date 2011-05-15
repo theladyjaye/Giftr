@@ -126,11 +126,10 @@ class User
 			require System\Application::basePath().'/application/data/queries/GMRQueryUserUpdate.php';
 			
 			$database = System\Database::connection(System\Database::kSql);
-			$query    = new GMRQueryUserUpdate($database, array('id'        => $this->id,
+			$query    = new Queries\UserUpdate($database, array('id'        => $this->id,
 			                                                    'username'  => $this->username,
 			                                                    'email'     => $this->email,
 			                                                    'active'    => $this->active,
-			                                                    'token'     => $this->token,
 			                                                    'password'  => $this->password));
 			$query->execute();
 			$object = $this;
@@ -140,9 +139,8 @@ class User
 			require System\Application::basePath().'/application/data/queries/GMRQueryUserInsert.php';
 			
 			$database = System\Database::connection(System\Database::kSql);
-			$query    = new GMRQueryUserInsert($database, array('username'  => $this->username,
+			$query    = new Queries\UserInsert($database, array('username'  => $this->username,
 			                                                    'email'     => $this->email,
-			                                                    'token'     => $this->token,
 			                                                    //'active'    => $this->active,
 			                                                    'password'  => $this->password));
 			$query->execute();
