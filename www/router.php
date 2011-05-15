@@ -1,9 +1,23 @@
 <?php
-
 require 'application/system/Environment.php';
 
+if(!isset($_GET['Controller']))
+{
+	header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
+	exit;
+}
+
 $controller = $_GET['Controller'];
-$action = $_GET['Action'];
+$action     = isset($_GET['Action'])? $_GET['Action'] ? "index";
 $controller = Giftr\System\Page::Controller($controller.'.php');
-$controller->$action();
+
+if(method_exists($controller, $action))
+{
+	$controller->$action();
+}
+else
+{
+	header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
+	exit;
+}
 ?>
