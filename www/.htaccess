@@ -15,6 +15,7 @@ RedirectMatch 404 ^/application(/?|/.*)$
 # WWW Routes
 
 RewriteRule ^$ /index.php?verb=$1 [L]
+RewriteRule ^awstest/?$ /awstest.php [L]
 #RewriteRule ^signup/complete/?$ /signup-success.php [L]
 #RewriteRule ^signup/?$ /signup-form.php [L]
 #RewriteRule ^login/?$ /login-form.php [L]
