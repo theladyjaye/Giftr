@@ -18,11 +18,6 @@ require System\Application::basePath().'/application/libs/axismundi/data/AMQuery
 
 
 // Amazon Web Services
-/* Example Usage:
-	$pas = new AmazonPAS();
-	$response = $pas->item_search('red hot chili peppers');
-	print_r($response);
-*/
 require System\Application::basePath().'/application/libs/aws-sdk-for-php/sdk.class.php';
 
 
