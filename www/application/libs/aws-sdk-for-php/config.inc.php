@@ -23,6 +23,8 @@ define('AWS_KEY', 'AKIAIWHATY47C4SDIKHA');
  */
 define('AWS_SECRET_KEY', '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');
 
+define('AWS_ASSOC_ID', AWS_KEY);
+
 /**
  * Amazon Account ID without dashes. Used for identification with Amazon EC2. Found in the AWS Security
  * Credentials.
