@@ -45,5 +45,11 @@ abstract class Controller extends Page
 	{
 		return true;
 	}
+	
+	protected function view($view, $model)
+	{
+		$configuration = Configuration::standardConfiguration();
+		require $configuration['views'].'/'.$view.".php";
+	}
 }
 ?>

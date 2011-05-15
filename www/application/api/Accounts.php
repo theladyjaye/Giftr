@@ -20,12 +20,11 @@ class Accounts extends ApiObject
 		$response->ok = true;
 		
 		$this->session->destroy();
-		//echo json_encode($response);
 		return $response;
 	}
 	
 	/**
-	 * Log in to gamepopapp.com
+	 * Log in
 	 * 
 	 * POST /accounts/login
 	 * 

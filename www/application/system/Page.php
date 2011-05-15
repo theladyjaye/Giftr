@@ -7,7 +7,7 @@ abstract class Page
 	
 	public static function Controller($class)
 	{
-		global $controller;
+		//global $controller;
 		$configuration = Configuration::standardConfiguration();
 		
 		//require realpath('./').'/'.$configuration['controllers'].'/'.$class;
@@ -15,7 +15,8 @@ abstract class Page
 		
 		
 		$class = substr($class, 0, strrpos($class, '.'));
-		$controller = new $class();
+		//$controller = new $class();
+		return new $class();
 	}
 	
 	public function __construct()
