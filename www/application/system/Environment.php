@@ -16,6 +16,11 @@ use Giftr\System as System;
 require System\Application::basePath().'/application/libs/axismundi/data/AMQuery.php';
 //require System\Application::basePath().'/application/data/GMRUser.php';
 
+
+// Amazon Web Services
+require System\Application::basePath().'/application/libs/aws-sdk-for-php/sdk.class.php';
+
+
 /*
 	TODO Before production needs to set the Zend Framework path in the ini manually so we don't need this call:
 */
