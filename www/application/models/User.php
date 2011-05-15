@@ -1,0 +1,155 @@
+<?php
+namespace Giftr\Models;
+use Giftr\System as System;
+use Giftr\Queries as Queries;
+class User
+{
+	public $id;
+	public $username;
+	public $email;
+	public $password;
+	public $active;
+	public $created_on;
+	
+	public static function hasUserWithNameOrEmail($username, $email)
+	{
+		static $queryLoaded = false;
+		
+		if(!$queryLoaded)
+		{
+			require System\Application::basePath().'/application/queries/GMRQueryUsersWithNameOrEmail.php';
+			$queryLoaded = true;
+		}
+		
+		$database = System\Database::connection(System\Database::kSql);
+		$query    = new Queries\UsersWithNameOrEmail($database, array('username' => $username, 'email' => $email));
+		
+		if(count($query) == 1)
+		{
+			$result = $query->one();
+			
+			if($result['username'] == $username)
+				return 'username';
+			
+			if($result['email'] == $email)
+				return 'email';
+		}
+		
+		return false;
+	}
+	
+	public static function userWithId($id)
+	{
+		static $queryLoaded = false;
+		
+		if(!$queryLoaded)
+		{
+			require System\Application::basePath().'/application/data/queries/GMRQueryUserWithId.php';
+			$queryLoaded = true;
+		}
+		
+		$object   = null;
+		$database = System\Database::connection(System\Database::kSql);
+		$query    = new Queries\UserWithId($database, $id);
+		
+		if(count($query) == 1)
+		{
+			$object = User::hydrateWithArray($query->one());
+		}
+		
+		return $object;
+	}
+	
+	public static function userWithUsername($username)
+	{
+		static $queryLoaded = false;
+		
+		if(!$queryLoaded)
+		{
+			require System\Application::basePath().'/application/data/queries/GMRQueryUserWithUsername.php';
+			$queryLoaded = true;
+		}
+		
+		$object   = null;
+		$database = System\Database::connection(System\Database::kSql);
+		$query    = new Queries\UserWithUsername($database, $username);
+		
+		if(count($query) == 1)
+		{
+			$object = User::hydrateWithArray($query->one());
+		}
+		
+		return $object;
+	}
+	
+	public static function userWithEmail($email)
+	{
+		static $queryLoaded = false;
+		
+		if(!$queryLoaded)
+		{
+			require System\Application::basePath().'/application/data/queries/GMRQueryUserWithEmail.php';
+			$queryLoaded = true;
+		}
+		
+		
+		$object   = null;
+		$database = System\Database::connection(System\Database::kSql);
+		$query    = new Queries\UserWithEmail($database, $email);
+		
+		if(count($query) == 1)
+		{
+			$object = User::hydrateWithArray($query->one());
+		}
+		
+		return $object;
+	}
+	
+	private static function hydrateWithArray($array)
+	{
+		$object             = new User();
+		$object->id         = $array['id'];
+		$object->username   = $array['username'];
+		$object->email      = $array['email'];
+		$object->password   = $array['password'];
+		$object->active     = (int) $array['active'];
+		$object->created_on = $array['created_on'];
+		
+		return $object;
+	}
+	
+	public function save()
+	{
+		if($this->id)
+		{
+			// update
+			require System\Application::basePath().'/application/data/queries/GMRQueryUserUpdate.php';
+			
+			$database = System\Database::connection(System\Database::kSql);
+			$query    = new GMRQueryUserUpdate($database, array('id'        => $this->id,
+			                                                    'username'  => $this->username,
+			                                                    'email'     => $this->email,
+			                                                    'active'    => $this->active,
+			                                                    'token'     => $this->token,
+			                                                    'password'  => $this->password));
+			$query->execute();
+			$object = $this;
+		}
+		else
+		{
+			require System\Application::basePath().'/application/data/queries/GMRQueryUserInsert.php';
+			
+			$database = System\Database::connection(System\Database::kSql);
+			$query    = new GMRQueryUserInsert($database, array('username'  => $this->username,
+			                                                    'email'     => $this->email,
+			                                                    'token'     => $this->token,
+			                                                    //'active'    => $this->active,
+			                                                    'password'  => $this->password));
+			$query->execute();
+			$object = User::userWithEmail($this->email);
+		}
+		
+		return $object;
+	}
+}
+?>
