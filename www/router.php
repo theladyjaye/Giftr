@@ -8,7 +8,7 @@ if(!isset($_GET['Controller']))
 }
 
 $controller = $_GET['Controller'];
-$action     = isset($_GET['Action'])? $_GET['Action'] ? "index";
+$action     = isset($_GET['Action'])? $_GET['Action'] : "index";
 $controller = Giftr\System\Page::Controller($controller.'.php');
 
 if(method_exists($controller, $action))

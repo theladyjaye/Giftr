@@ -12,7 +12,7 @@ class TestController extends Controller
 	public function	search()
 	{
 		
-		$keyword = "mvc framework";
+		$keyword = $_GET['k'];
 		
 		$model = new stdClass();
 		$pas = new AmazonPAS();

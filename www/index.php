@@ -1,45 +1,23 @@
-<?php 
+<?php
 require 'application/system/Environment.php';
-Giftr\System\Page::Controller('DefaultController.php');
+
+if(!isset($_GET['Controller']))
+{
+	header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
+	exit;
+}
+
+$controller = $_GET['Controller'];
+$action     = isset($_GET['Action'])? $_GET['Action'] : "index";
+$controller = Giftr\System\Page::Controller($controller.'.php');
+
+if(method_exists($controller, $action))
+{
+	$controller->$action();
+}
+else
+{
+	header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
+	exit;
+}
 ?>
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title>Giftr!</title>
-	<script type="text/javascript" src="/resources/js/jquery.js"></script>
-	<script type="text/javascript" src="/resources/js/giftr-application.js"></script>
-	<script type="text/javascript" src="/resources/js/giftr-default.js"></script>
-</head>
-<body>
-	<script type="text/javascript">
-		var giftr = giftr || { }
-		giftr.page.messages = <?php echo $model->messages;?>;
-	</script>
-	<div>
-		<?php if($model->formSuccess == false):?>
-		<form method="post">
-			<div>
-				<label for="username">Username</label>
-				<input type="text" id="username" name="username"/>
-			</div>
-			<div>
-				<label for="email">Email</label>
-				<input type="text" id="email" name="email"/>
-			</div>
-			<div>
-				<label for="password">Password</label>
-				<input type="text" id="password" name="password"/>
-			</div>
-			<div>
-				<label for="password-verify">Password</label>
-				<input type="text" id="password-verify" name="password-verify"/>
-			</div>
-			<input type="submit" name="submit" value="Submit" />
-		</form>
-		<?php else:?>
-			<h2>Success!</h2>
-		<?php endif;?>
-	</div>
-</body>
-</html>
