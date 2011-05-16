@@ -12,7 +12,7 @@ class LoginController extends System\Controller
 		$this->model = new stdClass();
 		$this->model->message = "Hello World";
 		
-		$this->view('login', $this->model);
+		return $this->view('login', $this->model);
 	}
 }
 ?>
