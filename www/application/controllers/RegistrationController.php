@@ -30,7 +30,6 @@ class RegistrationController extends System\Controller
 			}
 			
 			$this->model->messages = json_encode($response);
-			
 		}
 		
 		$this->model->title = "Fun Times -- Partial Views";

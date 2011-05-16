@@ -10,7 +10,7 @@
 <body>
 	<script type="text/javascript">
 		var giftr = giftr || { }
-		giftr.page.messages = <?php echo $model->messages;?>;
+		giftr.page.messages = <?php echo $model->messages?>;
 	</script>
 	<div>
 		<?php Html::render_partial("partial_list", $model)?>
