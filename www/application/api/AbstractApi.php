@@ -1,5 +1,7 @@
 <?php
 namespace Giftr\Api;
+
+use \stdClass;
 use Giftr\System\Session;
 
 abstract class ApiObject

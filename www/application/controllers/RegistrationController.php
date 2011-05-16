@@ -24,20 +24,18 @@ class RegistrationController extends System\Controller
 			require System\Application::basePath().'/application/libs/axismundi/forms/validators/AMErrorValidator.php';
 			
 			$accounts = new Api\Accounts();
-			$results = $accounts->register();
+			$response = $accounts->register();
 			
-			if($results->ok == true)
+			if($response->ok == true)
 			{
 				return $this->view('registration_thanks', $this->model);
 			}
+			
+			$this->model->messages = json_encode($response);
+			
 		}
 		
 		return $this->view('registration', $this->model);
-	}
-	
-	private function processRegistration()
-	{
-		
 	}
 }
 ?>
