@@ -2,11 +2,9 @@
 use Giftr\System;
 use Giftr\Api;
 
-
 class RegistrationController extends System\Controller
 {
 	protected function initialize_complete(){}
-	
 	
 	public function index()
 	{
@@ -35,6 +33,7 @@ class RegistrationController extends System\Controller
 			
 		}
 		
+		$this->model->title = "Fun Times -- Partial Views";
 		return $this->view('registration', $this->model);
 	}
 }

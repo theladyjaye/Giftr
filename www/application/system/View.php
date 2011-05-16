@@ -12,6 +12,8 @@ class View
 	{
 		$model =& $this->model;
 		$configuration = Configuration::standardConfiguration();
+		
+		require Application::basePath().'/application/system/Html.php';
 		require $configuration['views'].'/'.$this->template.".php";
 	}
 }

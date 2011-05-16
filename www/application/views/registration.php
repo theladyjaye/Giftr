@@ -13,6 +13,7 @@
 		giftr.page.messages = <?php echo $model->messages;?>;
 	</script>
 	<div>
+		<?php Html::render_partial("partial_list", $model)?>
 		<form method="post">
 			<div>
 				<label for="username">Username</label>

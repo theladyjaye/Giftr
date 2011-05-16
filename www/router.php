@@ -1,6 +1,6 @@
 <?php
 require 'application/system/Environment.php';
-
+use Giftr\System;
 if(!isset($_GET['Controller']))
 {
 	header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
