@@ -15,7 +15,10 @@ RedirectMatch 404 ^/application(/?|/.*)$
 
 # WWW Routes
 
+#test
 RewriteRule ^login/?$ router.php?Controller=LoginController&Action=foo [L,QSA]
+RewriteRule ^register/?$ router.php?Controller=RegistrationController [L,QSA]
+
 RewriteRule ^$ /index.php?verb=$1 [L]
 RewriteRule ^awstest/?$ /awstest.php [L]
 #RewriteRule ^signup/complete/?$ /signup-success.php [L]

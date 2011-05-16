@@ -1,11 +1,9 @@
 <?php
-$controller = null;
-$model = null;
-
 require "Application.php";
 require "Configuration.php";
 require "Database.php";
 require "Page.php";
+require "View.php";
 require "Controller.php";
 require "Session.php";
 require "Security.php";
