@@ -48,8 +48,9 @@ abstract class Controller extends Page
 	
 	protected function view($view, $model)
 	{
-		$configuration = Configuration::standardConfiguration();
-		require $configuration['views'].'/'.$view.".php";
+		return $view = new View($view, $model);
+		//$configuration = Configuration::standardConfiguration();
+		//require $configuration['views'].'/'.$view.".php";
 	}
 }
 ?>
