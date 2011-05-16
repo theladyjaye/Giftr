@@ -16,6 +16,7 @@ RedirectMatch 404 ^/application(/?|/.*)$
 # WWW Routes
 RewriteRule ^$ /router.php?Controller=LandingPageController [L,QSA]
 RewriteRule ^register/?$ router.php?Controller=RegistrationController [L,QSA]
+RewriteRule ^login/?$ router.php?Controller=LoginController [L,QSA]
 
 
 

@@ -13,7 +13,9 @@
 		giftr.page.messages = <?php echo $model->messages?>;
 	</script>
 	<div>
-		This is the landing page.
+		<ul>
+			<li><a href="/register">Register</a></li>
+		</ul>
 	</div>
 </body>
 </html>
