@@ -9,10 +9,10 @@ class LoginController extends System\Controller
 	
 	public function index()
 	{
-		$model = new stdClass();
-		$model->message = "Hello World";
+		$this->model = new stdClass();
+		$this->model->message = "Hello World";
 		
-		$this->view('login', $model);
+		$this->view('login', $this->model);
 	}
 }
 ?>
