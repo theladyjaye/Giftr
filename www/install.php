@@ -16,16 +16,18 @@ $db_account = <<<DB_ACCOUNT
 DB_ACCOUNT;
 
 $user_table = <<<USER_TABLE
-CREATE  TABLE `$DB_NAME`.`user` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `username` VARCHAR(45) NULL ,
-  `password` VARCHAR(64) NOT NULL ,
-  `email` VARCHAR(100) NULL ,
-  PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `iduser_UNIQUE` (`id` ASC) ,
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
-ENGINE = InnoDB;
+CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) DEFAULT NULL,
+  `password` varchar(64) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `active` bit(1) NOT NULL,
+  `created_on` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `iduser_UNIQUE` (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 USER_TABLE;
 
 $data = <<<USER_DATA
