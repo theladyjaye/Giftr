@@ -14,12 +14,20 @@ RedirectMatch 404 ^/application(/?|/.*)$
 </FilesMatch>
 
 # WWW Routes
+RewriteRule ^$ /router.php?Controller=LandingPageController [L,QSA]
+RewriteRule ^register/?$ router.php?Controller=RegistrationController [L,QSA]
+RewriteRule ^login/?$ router.php?Controller=LoginController [L,QSA]
+
+
+
+
+
 
 #test
-RewriteRule ^register/?$ router.php?Controller=RegistrationController [L,QSA]
-RewriteRule ^$ /index.php?verb=$1 [L]
-RewriteRule ^awstest/?$ /awstest.php [L]
-RewriteRule ^([0-9A-Za-z]+)/([0-9A-Za-z]+)/?$ /index.php?Controller=$1&Action=$2 [L,QSA]
+#RewriteRule ^register/?$ router.php?Controller=RegistrationController [L,QSA]
+#RewriteRule ^$ /index.php?verb=$1 [L]
+#RewriteRule ^awstest/?$ /awstest.php [L]
+#RewriteRule ^([0-9A-Za-z]+)/([0-9A-Za-z]+)/?$ /index.php?Controller=$1&Action=$2 [L,QSA]
 
 #RewriteRule ^$ /index.php?verb=$1 [L]
 #RewriteRule ^awstest/?$ /awstest.php [L]
