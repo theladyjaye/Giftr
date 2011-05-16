@@ -2,6 +2,7 @@
 namespace Giftr\Models;
 use Giftr\System as System;
 use Giftr\Queries as Queries;
+
 class User
 {
 	public $id;
@@ -17,12 +18,12 @@ class User
 		
 		if(!$queryLoaded)
 		{
-			require System\Application::basePath().'/application/queries/GMRQueryUsersWithNameOrEmail.php';
+			require System\Application::basePath().'/application/queries/UserWithNameOrEmail.php';
 			$queryLoaded = true;
 		}
 		
 		$database = System\Database::connection(System\Database::kSql);
-		$query    = new Queries\UsersWithNameOrEmail($database, array('username' => $username, 'email' => $email));
+		$query    = new Queries\UserWithNameOrEmail($database, array('username' => $username, 'email' => $email));
 		
 		if(count($query) == 1)
 		{
@@ -44,7 +45,7 @@ class User
 		
 		if(!$queryLoaded)
 		{
-			require System\Application::basePath().'/application/data/queries/GMRQueryUserWithId.php';
+			require System\Application::basePath().'/application/queries/UserWithId.php';
 			$queryLoaded = true;
 		}
 		
@@ -66,7 +67,7 @@ class User
 		
 		if(!$queryLoaded)
 		{
-			require System\Application::basePath().'/application/data/queries/GMRQueryUserWithUsername.php';
+			require System\Application::basePath().'/application/queries/UserWithUsername.php';
 			$queryLoaded = true;
 		}
 		
@@ -88,7 +89,7 @@ class User
 		
 		if(!$queryLoaded)
 		{
-			require System\Application::basePath().'/application/data/queries/GMRQueryUserWithEmail.php';
+			require System\Application::basePath().'/application/queries/UserWithEmail.php';
 			$queryLoaded = true;
 		}
 		
@@ -123,7 +124,7 @@ class User
 		if($this->id)
 		{
 			// update
-			require System\Application::basePath().'/application/data/queries/GMRQueryUserUpdate.php';
+			require System\Application::basePath().'/application/queries/UserUpdate.php';
 			
 			$database = System\Database::connection(System\Database::kSql);
 			$query    = new Queries\UserUpdate($database, array('id'        => $this->id,
@@ -136,7 +137,7 @@ class User
 		}
 		else
 		{
-			require System\Application::basePath().'/application/data/queries/GMRQueryUserInsert.php';
+			require System\Application::basePath().'/application/queries/UserInsert.php';
 			
 			$database = System\Database::connection(System\Database::kSql);
 			$query    = new Queries\UserInsert($database, array('username'  => $this->username,

@@ -27,8 +27,8 @@
 				<input type="text" id="password" name="password"/>
 			</div>
 			<div>
-				<label for="password-verify">Password</label>
-				<input type="text" id="password_verify" name="password-verify"/>
+				<label for="password_verify">Password</label>
+				<input type="text" id="password_verify" name="password_verify"/>
 			</div>
 			<input type="submit" name="submit" value="Submit" />
 		</form>
