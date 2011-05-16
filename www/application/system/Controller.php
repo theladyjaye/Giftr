@@ -46,6 +46,12 @@ abstract class Controller extends Page
 		return true;
 	}
 	
+	protected function redirect($url)
+	{
+		header("Location:".$url);
+		exit;
+	}
+	
 	protected function view($view, $model)
 	{
 		return $view = new View($view, $model);
