@@ -10,7 +10,7 @@ require "Security.php";
 
 use Giftr\System as System;
 
-//require System\Application::basePath().'/application/data/GMRCurrentUser.php';
+require System\Application::basePath().'/application/models/CurrentUser.php';
 require System\Application::basePath().'/application/libs/axismundi/data/AMQuery.php';
 //require System\Application::basePath().'/application/data/GMRUser.php';
 

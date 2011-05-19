@@ -14,7 +14,6 @@ class LoginController extends System\Controller
 		if($this->isPostBack)
 		{
 			require System\Application::basePath().'/application/models/User.php';
-			require System\Application::basePath().'/application/models/CurrentUser.php';
 			require System\Application::basePath().'/application/api/AbstractApi.php';
 			require System\Application::basePath().'/application/api/Accounts.php';
 			require System\Application::basePath().'/application/libs/axismundi/forms/AMForm.php';
@@ -27,13 +26,27 @@ class LoginController extends System\Controller
 			
 			if($response->ok == true)
 			{
-				$this->redirect("/home");
+				$this->redirect("/");
 			}
 			
 			$this->model->messages = json_encode($response);
 		}
 	
 		return $this->view('login', $this->model);
+	}
+	
+	public function logout()
+	{
+		require System\Application::basePath().'/application/api/AbstractApi.php';
+		require System\Application::basePath().'/application/api/Accounts.php';
+		
+		$accounts = new Api\Accounts();
+		$response = $accounts->logout();
+		
+		if($response->ok)
+		{
+			$this->redirect("/");
+		}
 	}
 }
 ?>
