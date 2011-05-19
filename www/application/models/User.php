@@ -61,6 +61,28 @@ class User
 		return $object;
 	}
 	
+	public static function userWithString($string)
+	{
+		static $queryLoaded = false;
+		
+		if(!$queryLoaded)
+		{
+			require System\Application::basePath().'/application/queries/UserWithString.php';
+			$queryLoaded = true;
+		}
+		
+		$object   = null;
+		$database = System\Database::connection(System\Database::kSql);
+		$query    = new Queries\UserWithString($database, $string);
+		
+		if(count($query) == 1)
+		{
+			$object = User::hydrateWithArray($query->one());
+		}
+		
+		return $object;
+	}
+	
 	public static function userWithUsername($username)
 	{
 		static $queryLoaded = false;

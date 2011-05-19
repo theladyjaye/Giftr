@@ -59,7 +59,7 @@ class Accounts extends ApiObject
 		
 		if($input->isValid)
 		{
-			$user = $is_email ? Models\User::userWithEmail($input->username) : Models\User::userWithUsername($input->username);
+			$user = Models\User::userWithString($input->username);
 			
 			if($user)
 			{
