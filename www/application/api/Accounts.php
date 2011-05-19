@@ -44,7 +44,6 @@ class Accounts extends ApiObject
 		$context = array(\AMForm::kDataKey=>$_POST);
 		$input   = \AMForm::formWithContext($context);
 		
-		
 		$input->addValidator(new \AMPatternValidator('password', \AMValidator::kRequired, '/^[\w\d\W]{5,}$/', "Invalid password.  Expecting minimum 5 characters. Cannot contain spaces"));
 		
 		if(strpos($input->username, '@') !== false)
@@ -61,7 +60,7 @@ class Accounts extends ApiObject
 		if($input->isValid)
 		{
 			$user = $is_email ? Models\User::userWithEmail($input->username) : Models\User::userWithUsername($input->username);
-
+			
 			if($user)
 			{
 				$password = System\Security::hash($input->password);

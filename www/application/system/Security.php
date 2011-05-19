@@ -6,7 +6,7 @@ class Security
 	
 	public static function hash($input)
 	{
-		return hash_hmac('sha256', $input, self::$key);
+		return hash('sha256', $input);
 	}
 	
 	public static function is_valid_user_cookie($token, $user_token)
