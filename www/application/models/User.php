@@ -83,51 +83,6 @@ class User
 		return $object;
 	}
 	
-	public static function userWithUsername($username)
-	{
-		static $queryLoaded = false;
-		
-		if(!$queryLoaded)
-		{
-			require System\Application::basePath().'/application/queries/UserWithUsername.php';
-			$queryLoaded = true;
-		}
-		
-		$object   = null;
-		$database = System\Database::connection(System\Database::kSql);
-		$query    = new Queries\UserWithUsername($database, $username);
-		
-		if(count($query) == 1)
-		{
-			$object = User::hydrateWithArray($query->one());
-		}
-		
-		return $object;
-	}
-	
-	public static function userWithEmail($email)
-	{
-		static $queryLoaded = false;
-		
-		if(!$queryLoaded)
-		{
-			require System\Application::basePath().'/application/queries/UserWithEmail.php';
-			$queryLoaded = true;
-		}
-		
-		
-		$object   = null;
-		$database = System\Database::connection(System\Database::kSql);
-		$query    = new Queries\UserWithEmail($database, $email);
-		
-		if(count($query) == 1)
-		{
-			$object = User::hydrateWithArray($query->one());
-		}
-		
-		return $object;
-	}
-	
 	private static function hydrateWithArray($array)
 	{
 		$object             = new User();
