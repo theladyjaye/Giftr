@@ -24,20 +24,25 @@ abstract class Controller extends Page
 
 	protected function verifyAuthorization()
 	{
-		if($this->session->currentUser)
-		{
-			if($this->session->currentUser->domain != $_GET['domain'])
-				$this->authorizationFailed();
-		}
-		else
+		if(!$this->session->currentUser)
 		{
 			$this->authorizationFailed();
 		}
 	}
 	
+	protected function isLoggedIn()
+	{
+		if($this->session->currentUser)
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
 	protected function authorizationFailed()
 	{
-		header('Location: /');
+		$this->redirect("/");
 	}
 	
 	protected function verifyPermissionFailed() {}

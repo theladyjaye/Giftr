@@ -9,7 +9,16 @@ class LandingPageController extends System\Controller
 	public function index()
 	{
 		$this->model = new stdClass();
-		return $this->view('landing_page',$this->model);
+		
+		if($this->isLoggedIn())
+		{
+			$this->model->user_id   = $this->session->currentUser->id;
+			$this->model->user_name = $this->session->currentUser->username;
+			
+			return $this->view('landing_page_logged_in',$this->model);
+		}
+		
+		return $this->view('landing_page', $this->model);
 	}	
 }
 ?>
