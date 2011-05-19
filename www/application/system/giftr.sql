@@ -35,3 +35,22 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE PROCEDURE `UserWithString`(in v_login varchar(45))
+BEGIN
+SELECT 
+  id, username, email, password, active, created_on 
+FROM 
+  user 
+WHERE 
+  (
+    username = v_login
+    or
+    email = v_login
+  );
+END
