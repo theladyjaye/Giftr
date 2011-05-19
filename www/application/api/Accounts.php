@@ -67,13 +67,13 @@ class Accounts extends ApiObject
 				
 				if($user->active == 1 && $password == $user->password)
 				{
-					if(System\Application::isMobileClient())
-					{
-						$response->ok     = true;
-						$response->token  = $user->token;
-					}
-					else
-					{
+					// if(System\Application::isMobileClient())
+					// 					{
+					// 						$response->ok     = true;
+					// 						$response->token  = $user->token;
+					// 					}
+					// 					else
+					// 					{
 						
 						$currentUser            = new Models\CurrentUser();
 						$currentUser->id        = $user->id;
@@ -83,7 +83,7 @@ class Accounts extends ApiObject
 
 						$response->ok     = true;
 						$response->user   = $currentUser;
-					}
+					//}
 				}
 				else
 				{
