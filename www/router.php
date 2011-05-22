@@ -1,4 +1,7 @@
 <?php
+
+// 
+
 require 'application/system/Environment.php';
 use Giftr\System;
 if(!isset($_GET['Controller']))
