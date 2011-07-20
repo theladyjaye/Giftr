@@ -3,6 +3,9 @@
 .project
 *.css
 .sass-cache
+<<<<<<< HEAD
 *.class
 *.pyc
 *.pyo
+=======
+>>>>>>> 61425c21caad150ef74c3e16cf4b078301a9007b

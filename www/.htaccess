@@ -1,0 +1,40 @@
+RewriteEngine On
+RewriteBase /
+#RewriteMap lowercase int:tolower
+#AllowEncodedSlashes On
+
+# Deny any Urls for /application
+RedirectMatch 404 ^/application(/?|/.*)$
+
+# Don't serve anything ending in .ini
+<FilesMatch "[^\.]+\.ini">
+	Order allow,deny
+	Deny from all
+	Satisfy All
+</FilesMatch>
+
+# WWW Routes
+RewriteRule ^$ /router.php?Controller=LandingPageController [L,QSA]
+RewriteRule ^register/?$ router.php?Controller=RegistrationController [L,QSA]
+RewriteRule ^login/?$ router.php?Controller=LoginController [L,QSA]
+RewriteRule ^logout/?$ router.php?Controller=LoginController&Action=logout [L,QSA]
+RewriteRule ^home/?$ router.php?Controller=HomeController [L,QSA]
+
+
+
+
+
+
+#test
+#RewriteRule ^register/?$ router.php?Controller=RegistrationController [L,QSA]
+#RewriteRule ^$ /index.php?verb=$1 [L]
+#RewriteRule ^awstest/?$ /awstest.php [L]
+#RewriteRule ^([0-9A-Za-z]+)/([0-9A-Za-z]+)/?$ /index.php?Controller=$1&Action=$2 [L,QSA]
+
+#RewriteRule ^$ /index.php?verb=$1 [L]
+#RewriteRule ^awstest/?$ /awstest.php [L]
+#RewriteRule ^signup/complete/?$ /signup-success.php [L]
+#RewriteRule ^signup/?$ /signup-form.php [L]
+#RewriteRule ^login/?$ /login-form.php [L]
+#RewriteRule ^logout/?$ /logout.php [L]
+
