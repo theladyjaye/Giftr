@@ -1,8 +1,8 @@
 <?php
-namespace Giftr\Api;
+namespace Evercue\Api;
 
 use \stdClass;
-use Giftr\System\Session;
+use Evercue\System\Session;
 
 abstract class ApiObject
 {

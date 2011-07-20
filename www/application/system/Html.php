@@ -1,5 +1,5 @@
 <?php
-use Giftr\System\Configuration;
+use Evercue\System\Configuration;
 
 class Html
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Giftr\Models;
+namespace Evercue\Models;
 
 class CurrentUser
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Giftr\Queries;
+namespace Evercue\Queries;
 use \AMQuery;
-use Giftr\System;
+use Evercue\System;
 class UserInsert extends AMQuery
 {
 	protected function initialize()

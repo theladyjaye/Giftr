@@ -1,5 +1,5 @@
 <?php
-namespace Giftr\System;
+namespace Evercue\System;
 class View
 {
 	public function __construct($template, $model)

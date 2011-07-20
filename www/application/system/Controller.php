@@ -1,5 +1,5 @@
 <?php
-namespace Giftr\System;
+namespace Evercue\System;
 abstract class Controller extends Page
 {
 	public $model;

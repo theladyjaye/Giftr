@@ -1,7 +1,7 @@
 <?php
-namespace Giftr\Models;
-use Giftr\System as System;
-use Giftr\Queries as Queries;
+namespace Evercue\Models;
+use Evercue\System as System;
+use Evercue\Queries as Queries;
 
 class User
 {

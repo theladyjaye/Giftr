@@ -1,8 +1,8 @@
 <?php
-namespace Giftr\Api;
+namespace Evercue\Api;
 use \stdClass;
-use Giftr\System as System;
-use Giftr\Models as Models;
+use Evercue\System as System;
+use Evercue\Models as Models;
 
 
 class Accounts extends ApiObject

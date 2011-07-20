@@ -1,5 +1,5 @@
 <?php
-namespace Giftr\Queries;
+namespace Evercue\Queries;
 use \AMQuery;
 
 /*

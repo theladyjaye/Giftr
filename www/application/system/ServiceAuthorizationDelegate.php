@@ -1,5 +1,5 @@
 <?php
-namespace Giftr\System\Services;
+namespace Evercue\System\Services;
 interface ServiceAuthorizationDelegate
 {
 	public function isAuthorized();

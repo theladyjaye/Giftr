@@ -1,6 +1,6 @@
 <?php
-use Giftr\System;
-use Giftr\Api;
+use Evercue\System;
+use Evercue\Api;
 
 class RegistrationController extends System\Controller
 {

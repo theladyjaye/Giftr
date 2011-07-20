@@ -1,5 +1,5 @@
 <?php
-namespace Giftr\System;
+namespace Evercue\System;
 class Security
 {
 	private static $key = 'e32d7e51c66b20a54d03c0dc51390c88';

@@ -1,6 +1,6 @@
 <?php
-use Giftr\System\Controller;
-use Giftr\System\Database;
+use Evercue\System\Controller;
+use Evercue\System\Database;
 
 class DefaultController extends Controller
 {

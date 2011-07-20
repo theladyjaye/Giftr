@@ -1,5 +1,5 @@
 <?php
-namespace Giftr\System;
+namespace Evercue\System;
 class Session
 {
 	const kSessionKey = 'GFTR';
