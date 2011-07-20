@@ -1,0 +1,8 @@
+.DS_Store
+.settings
+.project
+*.css
+.sass-cache
+*.class
+*.pyc
+*.pyo
