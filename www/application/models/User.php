@@ -122,7 +122,7 @@ class User
 			                                                    //'active'    => $this->active,
 			                                                    'password'  => $this->password));
 			$query->execute();
-			$object = User::userWithEmail($this->email);
+			$object = User::userWithString($this->email);
 		}
 		
 		return $object;

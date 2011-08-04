@@ -1,7 +1,5 @@
 <?php
 
-// 
-
 require 'application/system/Environment.php';
 use Evercue\System;
 if(!isset($_GET['Controller']))
